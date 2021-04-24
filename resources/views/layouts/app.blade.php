@@ -12,6 +12,7 @@
 
         <!-- Styles -->
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+        @livewireStyles
 
         <!-- Scripts -->
         <script src="{{ asset('js/app.js') }}" defer></script>
@@ -101,5 +102,7 @@
             <!-- extra div to push over the design -->
             <div class="w-1/12 invisible"></div>
         </main>
+
+        @livewireScripts
     </body>
 </html>
