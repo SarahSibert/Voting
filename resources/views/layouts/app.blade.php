@@ -17,11 +17,11 @@
         <script src="{{ asset('js/app.js') }}" defer></script>
     </head>
     <body class="font-sans bg-gray-50 text-gray-900 text-sm">
-        <header class="flex items-center justify-between px-8 py-4">
+        <header class="flex flex-col md:flex-row items-center justify-between px-8 py-4">
             <a href="/">
                 <img src="{{ asset("images/logo.svg") }}" alt="logo" />
             </a>
-            <div class="flex items-center">
+            <div class="mt-2 md:mt-0 flex items-center">
                 @if (Route::has('login'))
                 <div class="px-6 py-4">
                     @auth
@@ -46,9 +46,10 @@
             <img src="https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50?d=mp" class="h-10 w-10 rounded-full" /></div>
         </header>
 
-        <main class="container mx-auto max-w-6xl flex">
-            <div class="w-3/12 mr-5">
-                <div class="bg-white border-2 border-blue-500 rounded-xl mt-16">
+        <main class="container mx-auto max-w-6xl flex flex-col md:flex-row">
+            <!-- Add an idea sidebar -->
+            <div class="md:w-3/12 mx-auto md:mr-5">
+                <div class="bg-white md:sticky md:top-8 border-2 border-blue-500 rounded-xl mt-16">
                     <div class="text-center px-6 py-2 pt-6">
                         <h3 class="font-semibold text-base">Add an idea</h3>
                         <p class="text-xs mt-4">Let us know what you would like and we'll take a look.</p>
@@ -79,8 +80,9 @@
                     </form>
                 </div>
             </div>
-            <div class="w-8/12">
-                <nav class="flex items-center justify-between text-xs">
+            <!-- Main -->
+            <div class="w-full px-2 md:px-0 md:w-8/12">
+                <nav class="hidden md:flex items-center justify-between text-xs">
                     <ul class="flex uppercase font-semibold border-b-4 pb-3 space-x-10">
                         <li><a href="#" class="border-b-4 pb-3 border-blue-400">All Ideas (87)</a></li>
                         <li><a href="#" class="text-gray-400 transition duration-150 ease-in border-b-4 pb-3 hover:border-blue-500">Considering (6)</a></li>
@@ -96,6 +98,7 @@
                     {{ $slot }}
                 </div>
             </div>
+            <!-- extra div to push over the design -->
             <div class="w-1/12 invisible"></div>
         </main>
     </body>
