@@ -27,7 +27,19 @@
     <!-- Cards -->
     <div class="ideas-container space-y-6 my-6">
         @foreach ($ideas as $idea)
-            <div class="idea-container hover:shadow-md transition duration-150 ease-in bg-white rounded-xl flex cursor-pointer">
+            <div 
+                x-data
+                @click="
+                    const clicked = $event.target
+                    const target = clicked.tagName.toLowerCase()
+
+                    const ignores = ['button', 'svg', 'path', 'a']
+
+                    if (! ignores.includes(target)){
+                         clicked.closest('.idea-container').querySelector('.idea-link').click()
+                    }
+                "
+                class="idea-container hover:shadow-md transition duration-150 ease-in bg-white rounded-xl flex cursor-pointer">
                 <!-- Votes -->
                 <div class="hidden md:block border-r border-gray-100 px-5 py-8">
                     <div class="text-center">
@@ -49,7 +61,7 @@
                     <!-- Info -->
                     <div class="w-full flex flex-col justify-between mx-4">
                         <h4 class="mt-2 md:mt-0 text-xl font-semibold">
-                            <a href="{{ route('idea.show', $idea) }}" class="hover:underline">{{ $idea->title }}</a>
+                            <a href="{{ route('idea.show', $idea) }}" class="idea-link hover:underline">{{ $idea->title }}</a>
                         </h4>
                         <div class="text-gray-600 mt-3 line-clamp-3">
                             {{ $idea->description }}
@@ -66,7 +78,7 @@
                             <div 
                                 x-data="{ isOpen: false}"
                                 class="mt-2 md:md-0 flex items-center space-x-2">
-                                <div class="bg-gray-200 text-xs font-bold uppercase leading-none border border-gray-300 rounded-full text-center w-28 h-7 py-2 px-4">OPEN</div>
+                                <button class="bg-gray-200 text-xs font-bold uppercase leading-none border border-gray-300 rounded-full text-center w-28 h-7 py-2 px-4">OPEN</button>
                                 <button 
                                     @click="isOpen = !isOpen"
                                     class="relative bg-gray-100 hover:bg-gray-200 transition duration-150 ease-in rounded-full h-7 py-2 px-3">
