@@ -53,12 +53,14 @@
                         </div>
                         @if ($hasVoted)
                             <button
+                                wire:click.prevent="vote"
                                 class="w-20 bg-blue-500 border border-blue-500 text-white font-bold text-xxs uppercase rounded-xl hover:border-blue-400 transition duration-150 ease-in px-4 py-3 -mx-5"
                             >
                                 Voted
                             </button>
                         @else
                             <button
+                                wire:click.prevent="vote"
                                 class="w-20 bg-gray-200 border border-gray-200 font-bold text-xxs uppercase rounded-xl hover:border-gray-200 transition duration-150 ease-in px-4 py-3 -mx-5"
                             >
                                 Vote
@@ -211,11 +213,17 @@
                 </div>
             </div>
             @if ($hasVoted)
-                <button type="button" class="items-center justify-center h-11 w-32 text-xs bg-blue-500 font-semibold rounded-xl border border-blue-500 hover:bg-blue-700  text-white hover:border-blue-400 transition duration-150 ease-in px-6 py-3 uppercase">
+                <button 
+                    type="button" 
+                    wire:click.prevent="vote"
+                    class="items-center justify-center h-11 w-32 text-xs bg-blue-500 font-semibold rounded-xl border border-blue-500 hover:bg-blue-700  text-white hover:border-blue-400 transition duration-150 ease-in px-6 py-3 uppercase">
                     <span class="">Voted</span>
                 </button>
             @else
-                <button type="button" class="items-center justify-center h-11 w-32 text-xs bg-gray-200 font-semibold rounded-xl border border-gray-200 hover:border-gray-400 transition duration-150 ease-in px-6 py-3 uppercase">
+                <button 
+                    type="button" 
+                    wire:click.prevent="vote"
+                    class="items-center justify-center h-11 w-32 text-xs bg-gray-200 font-semibold rounded-xl border border-gray-200 hover:border-gray-400 transition duration-150 ease-in px-6 py-3 uppercase">
                     <span class="">Vote</span>
                 </button>
             @endif
