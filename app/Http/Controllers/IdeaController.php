@@ -44,7 +44,7 @@ class IdeaController extends Controller
      * @param  \App\Models\Idea  $idea
      * @return \Illuminate\Http\Response
      */
-    public function show(Idea $idea,)
+    public function show(Idea $idea)
     {
         return view('idea.show', [
             'idea' => $idea,
