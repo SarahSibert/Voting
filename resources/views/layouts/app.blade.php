@@ -19,8 +19,10 @@
     </head>
     <body class="font-sans bg-gray-50 text-gray-900 text-sm">
         <header class="flex flex-col md:flex-row items-center justify-between px-8 py-4">
-            <a href="/">
-                <img src="{{ asset("images/logo.svg") }}" alt="logo" />
+            <a href="/" class="text-3xl tracking-tight font-extrabold text-gray-900">
+                {{-- <span class="">TALL</span>
+                <span class="text-rose-600">Tales < /></span> --}}
+                <span class="">Ideas</span>
             </a>
             <div class="mt-2 md:mt-0 flex items-center">
                 @if (Route::has('login'))
