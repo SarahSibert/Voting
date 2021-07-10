@@ -1,12 +1,30 @@
-<div class="fixed z-10 inset-0 overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+<div 
+    x-cloak
+    x-data="{ isOpen: false}"
+    x-show="isOpen"
+    @keydown.escape.window="isOpen = false"
+    @custom-show-edit-modal.window="isOpen = true"
+    class="fixed z-10 inset-0 overflow-y-auto" 
+    aria-labelledby="modal-title" 
+    role="dialog" 
+    aria-modal="true">
+
     <div class="flex items-end justify-center min-h-screen">
         <!-- grey background overlay -->
-        <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" aria-hidden="true"></div>
+        <div 
+            x-show.transition.opacity="isOpen"
+            class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" aria-hidden="true">
+        </div>
 
         <!-- MODAL -->
-        <div class="modal bg-white rounded-tl-xl rounded-tr-xl p-4 overflow-hidden transform transition-all sm:max-w-lg sm:w-full">
+        <div 
+            x-show.transition.origin.bottom.duration.300ms="isOpen"
+            class="modal bg-white rounded-tl-xl rounded-tr-xl p-4 overflow-hidden transform transition-all sm:max-w-lg sm:w-full">
             <div class="absolute top-0 right-0 pt-4 pr-4">
-                <button class="text-gray-400 hover:text-gray-500">
+                <button 
+                    class="text-gray-400 hover:text-gray-500"
+                    @click="isOpen = false"
+                    >
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
                 </button>
             </div>
